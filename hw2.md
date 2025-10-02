@@ -28,3 +28,22 @@ gantt
     使用者訓練     :a10, after a7 a8, 20d
     使用者測試     :a11, after a9 a10, 25d
 ```
+
+  
+````markdown
+# HW2 PERT/CPM
+
+```mermaid
+graph TD
+    T1[1 研擬計畫 1天] --> T2[2 任務分配 4天]
+    T2 --> T4[4 程式開發 70天]
+    T4 --> T6[6 程式測試 30天]
+    T6 --> T9[9 系統測試 25天]
+    T9 --> T11[11 使用者測試 25天]
+
+    %% 標示關鍵路徑
+    linkStyle 0 stroke:red,stroke-width:3px;
+    linkStyle 1 stroke:red,stroke-width:3px;
+    linkStyle 2 stroke:red,stroke-width:3px;
+    linkStyle 3 stroke:red,stroke-width:3px;
+    linkStyle 4 stroke:red,stroke-width:3px;
