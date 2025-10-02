@@ -30,30 +30,30 @@ gantt
 ```
 
   
-```mermaid
 graph TD
-    T1[1 研擬計畫 1天]
-    T2[2 任務分配 4天]
+    T1[1 研擬計畫 1天]:::critical
+    T2[2 任務分配 4天]:::critical
     T3[3 取得硬體 17天]
-    T4[4 程式開發 70天]
+    T4[4 程式開發 70天]:::critical
     T5[5 安裝硬體 10天]
-    T6[6 程式測試 30天]
+    T6[6 程式測試 30天]:::critical
     T7[7 撰寫使用手冊 25天]
     T8[8 轉換檔案 20天]
-    T9[9 系統測試 25天]
+    T9[9 系統測試 25天]:::critical
     T10[10 使用者訓練 20天]
-    T11[11 使用者測試 25天]
+    T11[11 使用者測試 25天]:::critical
+
+    classDef critical fill:#f96,stroke:#333,stroke-width:2px;
 
     T1 --> T2
     T1 --> T3
     T2 --> T4
     T3 --> T5
     T4 --> T6
-    T4 --> T7
-    T5 --> T6
+    T5 --> T7
+    T5 --> T8
     T6 --> T9
     T7 --> T10
     T8 --> T10
     T9 --> T11
     T10 --> T11
-```
