@@ -29,7 +29,7 @@ gantt
     使用者測試     :a11, after a9 a10, 25d
 ```
 
-  
+```mermaid  
 graph TD
     T1[1 研擬計畫 1天]:::critical
     T2[2 任務分配 4天]:::critical
@@ -57,3 +57,4 @@ graph TD
     T8 --> T10
     T9 --> T11
     T10 --> T11
+```
