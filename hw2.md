@@ -30,20 +30,30 @@ gantt
 ```
 
   
-````markdown
-# HW2 PERT/CPM
-
 ```mermaid
 graph TD
-    T1[1 研擬計畫 1天] --> T2[2 任務分配 4天]
-    T2 --> T4[4 程式開發 70天]
-    T4 --> T6[6 程式測試 30天]
-    T6 --> T9[9 系統測試 25天]
-    T9 --> T11[11 使用者測試 25天]
+    T1[1 研擬計畫 1天]
+    T2[2 任務分配 4天]
+    T3[3 取得硬體 17天]
+    T4[4 程式開發 70天]
+    T5[5 安裝硬體 10天]
+    T6[6 程式測試 30天]
+    T7[7 撰寫使用手冊 25天]
+    T8[8 轉換檔案 20天]
+    T9[9 系統測試 25天]
+    T10[10 使用者訓練 20天]
+    T11[11 使用者測試 25天]
 
-    %% 標示關鍵路徑
-    linkStyle 0 stroke:red,stroke-width:3px;
-    linkStyle 1 stroke:red,stroke-width:3px;
-    linkStyle 2 stroke:red,stroke-width:3px;
-    linkStyle 3 stroke:red,stroke-width:3px;
-    linkStyle 4 stroke:red,stroke-width:3px;
+    T1 --> T2
+    T1 --> T3
+    T2 --> T4
+    T3 --> T5
+    T4 --> T6
+    T4 --> T7
+    T5 --> T6
+    T6 --> T9
+    T7 --> T10
+    T8 --> T10
+    T9 --> T11
+    T10 --> T11
+```
