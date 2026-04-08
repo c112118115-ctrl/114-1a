@@ -1,3 +1,4 @@
+```mermaid
 graph DT
     subgraph Client_Layer ["前端展示層"]
         App["Mobile App (React Native)"]
@@ -24,3 +25,5 @@ graph DT
     API <--> SC
     SC --- BC
     SC -.-> IPFS
+
+```
