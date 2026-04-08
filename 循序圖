@@ -1,3 +1,4 @@
+` ` `mermaid
 sequenceDiagram
     autonumber
     actor User as 使用者
@@ -21,3 +22,4 @@ sequenceDiagram
         Auth-->>FE: 回傳錯誤訊息 (401 Unauthorized)
         FE-->>User: 顯示「帳號或密碼錯誤」
     end
+` ` `mermaid
