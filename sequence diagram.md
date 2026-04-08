@@ -2,26 +2,33 @@
 
 sequenceDiagram
     autonumber
-    actor User as 使用者
-    participant FE as 前端界面 (Frontend)
-    participant Auth as 認證服務 (Auth Service)
-    participant DB as 資料庫 (Database)
+    actor Fan as 粉絲 (Fan)
+    participant FE as 購票平台 (Frontend)
+    participant Wallet as 加密錢包 (e.g. MetaMask)
+    participant SC as 售票智能合約 (Smart Contract)
+    participant BC as 區塊鏈網路 (Blockchain)
 
-    User->>FE: 輸入帳號密碼
-    FE->>Auth: 發送驗證請求 (POST /login)
+    Note over Fan, BC: 演唱會購票與 NFT 鑄造流程
+
+    Fan->>FE: 點擊「立即購票」
+    FE->>Wallet: 請求簽署交易 (Request Signature)
+    Wallet-->>Fan: 彈出視窗確認金額與 Gas Fee
     
-    rect rgb(240, 240, 240)
-        Note over Auth, DB: 進行身分鑑別與授權
-        Auth->>DB: 查詢使用者資料 (Query User)
-        DB-->>Auth: 回傳使用者憑證與 Hash 密碼
+    Fan->>Wallet: 確認並簽署
+    Wallet->>SC: 呼叫購票函數 (call mintTicket())
+    
+    rect rgb(230, 245, 255)
+        SC->>BC: 驗證餘額與門票配額
+        BC-->>SC: 交易確認 (Transaction Mined)
+        SC->>BC: 轉移資金並鑄造 NFT 門票
     end
 
-    alt 驗證成功
-        Auth-->>FE: 回傳 JWT Token (200 OK)
-        FE-->>User: 導向至儀表板
-    else 驗證失敗
-        Auth-->>FE: 回傳錯誤訊息 (401 Unauthorized)
-        FE-->>User: 顯示「帳號或密碼錯誤」
+    BC-->>FE: 回傳交易雜湊 (Tx Hash) 與結果
+    
+    alt 交易成功
+        FE-->>Fan: 顯示「購票成功」並展示 NFT 憑證
+    else 交易失敗 (餘額不足或已售罄)
+        FE-->>Fan: 顯示「交易失敗」及原因
     end
 
 ```
