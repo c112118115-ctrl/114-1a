@@ -1,0 +1,23 @@
+sequenceDiagram
+    autonumber
+    actor User as 使用者
+    participant FE as 前端界面 (Frontend)
+    participant Auth as 認證服務 (Auth Service)
+    participant DB as 資料庫 (Database)
+
+    User->>FE: 輸入帳號密碼
+    FE->>Auth: 發送驗證請求 (POST /login)
+    
+    rect rgb(240, 240, 240)
+        Note over Auth, DB: 進行身分鑑別與授權
+        Auth->>DB: 查詢使用者資料 (Query User)
+        DB-->>Auth: 回傳使用者憑證與 Hash 密碼
+    end
+
+    alt 驗證成功
+        Auth-->>FE: 回傳 JWT Token (200 OK)
+        FE-->>User: 導向至儀表板
+    else 驗證失敗
+        Auth-->>FE: 回傳錯誤訊息 (401 Unauthorized)
+        FE-->>User: 顯示「帳號或密碼錯誤」
+    end
