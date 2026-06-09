@@ -1,4 +1,4 @@
-```memarid
+```mermard
 graph TD
     %% 節點樣式設定
     classDef entity fill:#f9f,stroke:#333,stroke-width:2px;
