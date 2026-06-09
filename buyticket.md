@@ -1,3 +1,4 @@
+```memarid
 graph TD
     %% 節點樣式設定
     classDef entity fill:#f9f,stroke:#333,stroke-width:2px;
@@ -29,3 +30,4 @@ graph TD
     P3 -->|發動 NFTokenMint 鑄造 NFT| D1
     P3 -->|異步回傳成功區塊鏈事件| D2
     D2 -->|即時推播更新數據| User
+```
